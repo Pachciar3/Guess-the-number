@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Guess the number</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;subset=latin-ext" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body>
+  <div class="options">
+    <div class="options__content">
+      <form class="form-range">
+        <div class="form-range__title">Wybierz zakres:</div>
+        <div class="form-range__inputs">
+          <p class="form-range__input-con">
+            <label for="from" class="form-range__label">Od:</label>
+            <input type="number" id="from" class="form-range__input">
+          </p>
+          <p class="form-range__input-con">
+            <label for="to" class="form-range__label">Do:</label>
+            <input type="number" id="to" class="form-range__input">
+        </div>
+        </p>
+        <button class="btn form-range__button">Start</button>
+      </form>
+    </div>
+    <div class="options__button">
+      <button class="wide-btn">
+        <span class="far fa-arrow-alt-circle-up wide-btn__ico"></span>
+        <span class="wide-btn__text">Zmień ustawienia startowe</span>
+        <span class="far fa-arrow-alt-circle-up wide-btn__ico"></span>
+      </button>
+    </div>
+  </div>
+  <div class="wrapper">
+    <header class="main-header">
+      Jaką liczbę wylosowałem z zakresu <span>0-500</span> ?
+    </header>
+    <main class="main-content">
+      <div class="main-content__wrapper">
+        <!-- <form class="number-form">
+          <label for="number" class="number-form__label">Wpisz liczbę:</label>
+          <input type="number" class="number-form__input" id="number" value="300" disabled>
+        </form>
+        <div class="result result--blue">Za duża liczba</div>
+        <form class="number-form">
+          <label for="number" class="number-form__label">Wpisz liczbę:</label>
+          <input type="number" class="number-form__input" id="number" value="200">
+        </form>
+        <div class="result result--lightBlue">Za mała liczba</div>
+        <form class="number-form">
+          <label for="number" class="number-form__label">Wpisz liczbę:</label>
+          <input type="number" class="number-form__input" id="number" value="550">
+        </form>
+        <div class="result result--darkGrey">Poza zakresem</div>
+        <form class="number-form">
+          <label for="number" class="number-form__label">Wpisz liczbę:</label>
+          <input type="number" class="number-form__input" id="number" value="1998">
+        </form>
+        <div class="result result--red">Ty oszuście: 283</div>
+        <form class="number-form">
+          <label for="number" class="number-form__label">Wpisz liczbę:</label>
+          <input type="number" class="number-form__input" id="number" value="283">
+        </form>
+        <div class="result result--yellow">Brawo to ta liczba !!</div>
+        <div class="text">Grasz ponownie ?</div>
+        <button class="btn">tak</button> -->
+      </div>
+    </main>
+    <footer class="main-footer">Created by <a href="https://github.com/Pachciar3/">Dawid Pachciarek</a></footer>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

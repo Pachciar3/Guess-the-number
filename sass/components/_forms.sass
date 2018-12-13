@@ -1,0 +1,43 @@
+.form-range
+  padding: 30px 20px
+  &__title
+    text-align: center
+    font-size: 4rem
+  &__inputs
+    display: flex
+    align-items: center
+    justify-content: space-around
+    padding: 20px 0px
+  &__input-con
+    display: flex
+    align-items: center
+    flex-basis: 280px
+  &__label
+    font-size: 3rem
+    text-transform: uppercase
+    padding-right: 5px
+  &__input
+    height: 50px
+    min-width: 100px
+    width: 100%
+    border: 0
+    padding: 0px 10px
+    font-size: 2rem
+  &__button
+    height: 50px
+    font-weight: 800
+    padding: 0px
+    font-size: 3rem
+    max-width: 280px
+@media (max-width: 640px)
+  .form-range
+    &__input-con
+      padding: 0px 10px
+@media (max-width: 350px)
+  .form-range
+    &__inputs
+      flex-direction: column
+    &__input-con
+      flex-basis: 70px
+    &__title
+      font-size: 3.3rem
