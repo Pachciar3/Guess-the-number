@@ -108,11 +108,6 @@ const addResult = (color, className, text) => {
     mainCnt.style.backgroundColor = '#FFF';
   }, 1000)
 }
-
-
-
-
-
-
+toogleOptions();
 formRange.addEventListener('submit', chooseRange);
 optionsBtn.addEventListener('click', toogleOptions);
