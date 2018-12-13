@@ -19,7 +19,7 @@ const toogleOptions = () => {
     optionsCnt.style.height = '0px';
   }
 }
-const reset=()=>{
+const reset = () => {
   randomNumber = Math.floor(Math.random() * (to - from + 1) + from);
   mainCntWr.textContent = "";
   addInput();
@@ -43,14 +43,14 @@ const addInput = () => {
       console.log('Tak to ta liczba');
       addResult('#cddc39', 'result--yellow', 'Brawo to ta liczba !!');
       window.scrollTo(0, document.body.scrollHeight);
-      setTimeout(()=>{
-        const div=document.createElement('div');
-        div.className="text";
-        div.textContent="Grasz ponownie ?";
-        const btn=document.createElement('button');
-        btn.className="btn";
-        btn.textContent="Tak";
-        btn.addEventListener('click',reset);
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.className = "text";
+        div.textContent = "Grasz ponownie ?";
+        const btn = document.createElement('button');
+        btn.className = "btn";
+        btn.textContent = "Tak";
+        btn.addEventListener('click', reset);
         mainCntWr.appendChild(div);
         mainCntWr.appendChild(btn);
         window.scrollTo(0, document.body.scrollHeight);
@@ -84,9 +84,10 @@ const chooseRange = e => {
   e.preventDefault();
   fromIn = Number(e.target.querySelector('#from').value);
   toIn = Number(e.target.querySelector('#to').value);
-  if ((fromIn && toIn) && (toIn > fromIn)) {
-    from=fromIn;to=toIn;
-    mainHeaderSpan.textContent=`${from}-${to}`
+  if (((fromIn && toIn) && (toIn > fromIn)) || ((toIn > fromIn) && (toIn === 0 || fromIn === 0))) {
+    from = fromIn;
+    to = toIn;
+    mainHeaderSpan.textContent = `${from}-${to}`
     randomNumber = Math.floor(Math.random() * (to - from + 1) + from);
     toogleOptions();
     mainCntWr.textContent = "";
