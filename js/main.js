@@ -82,9 +82,10 @@ const addInput = () => {
 }
 const chooseRange = e => {
   e.preventDefault();
-  from = Number(e.target.querySelector('#from').value);
-  to = Number(e.target.querySelector('#to').value);
-  if ((from && to) && (to > from)) {
+  fromIn = Number(e.target.querySelector('#from').value);
+  toIn = Number(e.target.querySelector('#to').value);
+  if ((fromIn && toIn) && (toIn > fromIn)) {
+    from=fromIn;to=toIn;
     mainHeaderSpan.textContent=`${from}-${to}`
     randomNumber = Math.floor(Math.random() * (to - from + 1) + from);
     toogleOptions();
