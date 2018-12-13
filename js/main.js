@@ -53,6 +53,7 @@ const addInput = () => {
         btn.addEventListener('click', reset);
         mainCntWr.appendChild(div);
         mainCntWr.appendChild(btn);
+        btn.focus();
         window.scrollTo(0, document.body.scrollHeight);
       }, 800)
     } else {
