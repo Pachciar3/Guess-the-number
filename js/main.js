@@ -38,7 +38,6 @@ const addInput = () => {
     input.id = "";
     label.removeAttribute('for');
     input.setAttribute('disabled', 'disabled');
-    console.log(e.target.querySelector('.number-form__label'));
     if (value === randomNumber) {
       console.log('Tak to ta liczba');
       addResult('#cddc39', 'result--yellow', 'Brawo to ta liczba !!');
