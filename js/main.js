@@ -26,63 +26,51 @@ const reset = () => {
   mainCntWr.textContent = "";
   addInput();
 }
-const addInput = () => {
+const addInput = (animated = false) => {
   const formNumber = document.createElement('form');
-  formNumber.className = "number-form";
+  formNumber.className = animated ? "number-form is-animated" : "number-form";
   formNumber.innerHTML = `<label for="number" class="number-form__label">Wpisz liczbę:</label><input type="number" class="number-form__input" id="number">`
   mainCntWr.appendChild(formNumber);
-  formNumber.querySelector('.number-form__input').focus();
+  document.getElementById('number').focus();
   formNumber.addEventListener('submit', e => {
     e.preventDefault();
     const label = e.target.querySelector('.number-form__label');
     const input = e.target.querySelector('.number-form__input');
-    let value
-    if (input.value === "") {
-      value = false
-    } else {
+    if (input.value !== "") {
       value = Number(input.value);
-    }
-    input.id = "";
-    label.removeAttribute('for');
-    input.setAttribute('disabled', 'disabled');
-    if (value === randomNumber) {
-      countGuess++
-      addResult('#cddc39', 'result--yellow', 'Brawo to ta liczba !!');
-      window.scrollTo(0, document.body.scrollHeight);
-      setTimeout(() => {
+      input.id = "";
+      label.removeAttribute('for');
+      input.setAttribute('disabled', 'disabled');
+      if (value === randomNumber) {
+        countGuess++
+        addResult('#cddc39', 'result--yellow', 'Brawo to ta liczba !!');
         const div = document.createElement('div');
-        div.className = "text";
+        div.className = "text is-animated";
         div.innerHTML = `<strong>Zgadłeś za ${countGuess} próbą</strong>. Grasz ponownie ?`;
         const btn = document.createElement('button');
-        btn.className = "btn";
+        btn.className = "btn is-animated";
         btn.textContent = "Tak";
         btn.addEventListener('click', reset);
         mainCntWr.appendChild(div);
         mainCntWr.appendChild(btn);
         btn.focus();
-        window.scrollTo(0, document.body.scrollHeight);
-      }, 800)
-    } else {
-      if (value === false) {
-        addResult('#9e9e9e', 'result--darkGrey', 'Musisz podać jakąś liczbę');
-      } else if (value === 1998) {
-        addResult('#f44336', 'result--red', `Ty oszuście: ${randomNumber}`);
-      } else if ((value < from) || ((value > to))) {
-        addResult('#9e9e9e', 'result--darkGrey', 'Poza zakresem');
-      } else if (value > randomNumber) {
-        addResult('#2196f3', 'result--blue', 'Za duża liczba');
-        countGuess++
-      } else if (value < randomNumber) {
-        addResult('#03a9f4', 'result--lightBlue', 'Za mała liczba');
-        countGuess++
       } else {
-        addResult('#9e9e9e', 'result--darkGrey', 'Zła wartość');
+        if (value === 1998) {
+          addResult('#f44336', 'result--red', `Ty oszuście: ${randomNumber}`);
+        } else if ((value < from) || ((value > to))) {
+          addResult('#9e9e9e', 'result--darkGrey', 'Poza zakresem');
+        } else if (value > randomNumber) {
+          addResult('#2196f3', 'result--blue', 'Za duża liczba');
+          countGuess++
+        } else if (value < randomNumber) {
+          addResult('#03a9f4', 'result--lightBlue', 'Za mała liczba');
+          countGuess++
+        } else {
+          addResult('#9e9e9e', 'result--darkGrey', 'Zła wartość');
+        }
+        addInput(true);
       }
       window.scrollTo(0, document.body.scrollHeight);
-      setTimeout(() => {
-        addInput();
-        window.scrollTo(0, document.body.scrollHeight);
-      }, 800)
     }
   })
 }
@@ -104,12 +92,9 @@ const chooseRange = e => {
 const addResult = (color, className, text) => {
   const result = document.createElement('div');
   mainCnt.style.backgroundColor = color;
-  result.className = `result ${className}`;
+  result.className = `result ${className} is-animated`;
   result.innerHTML = text;
   mainCntWr.appendChild(result);
-  setTimeout(() => {
-    result.classList.add('is-active')
-  }, 500)
   setTimeout(() => {
     mainCnt.style.backgroundColor = '#FFF';
   }, 1000)
