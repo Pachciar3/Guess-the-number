@@ -7,8 +7,9 @@ const mainHeaderSpan = document.querySelector('.main-header span');
 let randomNumber = null;
 let from = null;
 let to = null;
-
 let toogleOptionsFlag = true;
+let countGuess = 0;
+
 const toogleOptions = () => {
   optionsBtn.classList.toggle('is-active')
   if (toogleOptionsFlag) {
@@ -20,6 +21,7 @@ const toogleOptions = () => {
   }
 }
 const reset = () => {
+  countGuess = 0;
   randomNumber = Math.floor(Math.random() * (to - from + 1) + from);
   mainCntWr.textContent = "";
   addInput();
@@ -34,18 +36,23 @@ const addInput = () => {
     e.preventDefault();
     const label = e.target.querySelector('.number-form__label');
     const input = e.target.querySelector('.number-form__input');
-    const value = Number(input.value);
+    let value
+    if (input.value === "") {
+      value = false
+    } else {
+      value = Number(input.value);
+    }
     input.id = "";
     label.removeAttribute('for');
     input.setAttribute('disabled', 'disabled');
     if (value === randomNumber) {
-      console.log('Tak to ta liczba');
+      countGuess++
       addResult('#cddc39', 'result--yellow', 'Brawo to ta liczba !!');
       window.scrollTo(0, document.body.scrollHeight);
       setTimeout(() => {
         const div = document.createElement('div');
         div.className = "text";
-        div.textContent = "Grasz ponownie ?";
+        div.innerHTML = `<strong>Zgadłeś za ${countGuess} próbą</strong>. Grasz ponownie ?`;
         const btn = document.createElement('button');
         btn.className = "btn";
         btn.textContent = "Tak";
@@ -56,20 +63,19 @@ const addInput = () => {
         window.scrollTo(0, document.body.scrollHeight);
       }, 800)
     } else {
-      if (value === 1998) {
-        console.log('Ty oszuście', randomNumber);
+      if (value === false) {
+        addResult('#9e9e9e', 'result--darkGrey', 'Musisz podać jakąś liczbę');
+      } else if (value === 1998) {
         addResult('#f44336', 'result--red', `Ty oszuście: ${randomNumber}`);
       } else if ((value < from) || ((value > to))) {
-        console.log('Poza zakresem');
         addResult('#9e9e9e', 'result--darkGrey', 'Poza zakresem');
       } else if (value > randomNumber) {
-        console.log('Za dużo');
         addResult('#2196f3', 'result--blue', 'Za duża liczba');
+        countGuess++
       } else if (value < randomNumber) {
-        console.log('Za mało');
         addResult('#03a9f4', 'result--lightBlue', 'Za mała liczba');
+        countGuess++
       } else {
-        console.log('Zła wartość');
         addResult('#9e9e9e', 'result--darkGrey', 'Zła wartość');
       }
       window.scrollTo(0, document.body.scrollHeight);
@@ -88,10 +94,8 @@ const chooseRange = e => {
     from = fromIn;
     to = toIn;
     mainHeaderSpan.textContent = `${from}-${to}`
-    randomNumber = Math.floor(Math.random() * (to - from + 1) + from);
     toogleOptions();
-    mainCntWr.textContent = "";
-    addInput();
+    reset();
   } else {
     alert('Podaj prawidłowe liczby !!')
   }
