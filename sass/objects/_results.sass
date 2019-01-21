@@ -7,7 +7,6 @@
   color: $white
   letter-spacing: 1px
   transition: all .2s
-  transform: scale(0)
   overflow: hidden
   &--blue
     background-color: $lightBlue
@@ -23,3 +22,6 @@
     font-weight: bold
   &.is-animated
     animation: scale .3s linear .4s both
+@media(min-width: 1024px)
+  .result:hover
+    letter-spacing: 3px

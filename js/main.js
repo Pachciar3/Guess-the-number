@@ -94,6 +94,12 @@ const addResult = (color, className, text) => {
   mainCnt.style.backgroundColor = color;
   result.className = `result ${className} is-animated`;
   result.innerHTML = text;
+  result.addEventListener('mouseover', () => {
+    mainCnt.style.backgroundColor = color;
+  })
+  result.addEventListener('mouseout', () => {
+    mainCnt.style.backgroundColor = '#FFF';
+  })
   mainCntWr.appendChild(result);
   setTimeout(() => {
     mainCnt.style.backgroundColor = '#FFF';
