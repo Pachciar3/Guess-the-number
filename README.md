@@ -6,3 +6,5 @@ In "guess the number" application you must guess the number, who random the comp
   - CSS 3 (BEM methodology)
   - Java Script
   - SASS
+## Cheats
+If you write 1998, in result you get a drawn number
